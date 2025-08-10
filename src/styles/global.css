@@ -81,3 +81,10 @@ blockquote {
 	margin: 0;
 	font-style: italic;
 }
+
+img {
+	width: 80%;
+	height: auto;
+	margin: auto;
+	display: block;
+}

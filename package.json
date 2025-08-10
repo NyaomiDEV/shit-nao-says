@@ -9,6 +9,10 @@
     "preview": "astro preview",
     "astro": "astro"
   },
+  "os": [
+    "current",
+    "linux"
+  ],
   "dependencies": {
     "@astrojs/mdx": "^4.3.3",
     "@astrojs/rss": "^4.0.12",

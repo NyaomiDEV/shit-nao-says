@@ -8,6 +8,7 @@ export default defineConfig({
 	site: 'https://nao.mom',
 	trailingSlash: 'never',
 	compressHTML: true,
+	output: 'static',
 	build: {
 		format: "file",
 		assets: "assets",
