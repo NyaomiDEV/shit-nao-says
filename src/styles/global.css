@@ -1,0 +1,83 @@
+:root {
+	--bg: #212121;
+	--fg: #dedede;
+	--accent: #d93bd9;
+}
+
+html {
+	background-color: var(--bg);
+	color: var(--fg);
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+	margin: auto;
+	max-width: 60em;
+}
+
+header, footer {
+	display: block;
+	padding: 1em;
+	text-align: center;
+}
+
+header {
+	border-bottom: 1px var(--accent) solid;
+	margin-bottom: 2em;
+}
+
+header .links {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 2em;
+}
+
+footer {
+	border-top: 1px var(--accent) solid;
+	margin-top: 2em;
+}
+
+a {
+	color: var(--accent);
+	text-decoration: none;
+}
+
+section, article {
+	padding: 0 2em;
+}
+
+section.posts li {
+	margin: .75em 0em;
+}
+
+section.posts li[data-language=it] .title::before {
+	content: "🇮🇹";
+	margin-inline-end: .25em;
+}
+
+section.posts li[data-language=en] .title::before {
+	content: "🇬🇧";
+	margin-inline-end: .25em;
+}
+
+section.posts .title {
+	font-size: 1.2em;
+	font-weight: bold;
+	display: block;
+}
+
+section.posts .pinned {
+	font-weight: bold;
+}
+
+article .title h1 {
+	color: var(--accent);
+}
+
+blockquote {
+	border-left: 2px solid var(--accent);
+	padding-left: 1em;
+	margin: 0;
+	font-style: italic;
+}

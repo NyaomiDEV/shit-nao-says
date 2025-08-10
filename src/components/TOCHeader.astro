@@ -1,0 +1,24 @@
+---
+interface Props {
+	tocItem: TableOfContentsItem
+}
+
+export type TableOfContentsItem = {
+	slug: string;
+	text: string;
+	subheadings: TableOfContentsItem[];
+};
+---
+
+<li>
+	<a href={"#" + Astro.props.tocItem.slug}>{Astro.props.tocItem.text}</a>
+	{
+		Astro.props.tocItem.subheadings.length > 0 && (
+			<ul>
+				{Astro.props.tocItem.subheadings.map((s: any) => (
+					<Astro.self tocItem={s} />
+				))}
+			</ul>
+		)
+	}
+</li>

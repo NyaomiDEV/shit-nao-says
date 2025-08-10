@@ -1,0 +1,50 @@
+---
+title: Blog
+description: Nao's blog index
+layout: ../../layouts/BasePage.astro
+---
+
+import Date from "../../components/Date.astro";
+import { getCollection } from "astro:content";
+
+<section class="blog-index">
+
+This is the blog index.
+
+Remember that you can follow this blog via its [RSS feed](/rss.xml).
+
+</section>
+<section class="posts">
+
+# Posts
+
+<ul>
+{
+	(await getCollection("blog"))
+	.sort((a, b) => {
+		if(a.data.pinned && !b.data.pinned) return -1;
+		if(!a.data.pinned && b.data.pinned) return 1;
+
+		return b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+		})
+	.map((post) => (
+		<li data-language={post.data.language}>
+			<span class="title">
+				<a href={`/blog/${post.id}.html`}>
+					{post.data.title}
+				</a>
+			</span>
+			<span class="date">
+				<Date date={post.data.pubDate} />
+			</span>
+			&nbsp;—&nbsp;
+			{ post.data.pinned && <><span class="pinned">Pinned</span>&nbsp;—&nbsp;</> }
+			<span class="description">
+				{post.data.description}
+			</span>
+		</li>
+	))
+}
+</ul>
+
+</section>

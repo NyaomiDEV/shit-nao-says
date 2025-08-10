@@ -1,0 +1,36 @@
+---
+import type { MarkdownHeading } from "astro";
+import TOCHeader, { type TableOfContentsItem } from "./TOCHeader.astro";
+
+interface Props {
+	headings: MarkdownHeading[]
+}
+
+function buildHierarchy(headings: MarkdownHeading[]) {
+	const toc: TableOfContentsItem[] = [];
+
+	const parentHeadings = new Map<number, TableOfContentsItem>();
+
+	for (const h of headings) {
+		const heading = {
+			slug: h.slug,
+			text: h.text,
+			subheadings: new Array<TableOfContentsItem>(),
+		};
+
+		parentHeadings.set(h.depth, heading);
+
+		if (h.depth === 1) {
+			toc.push(heading);
+		} else {
+			parentHeadings.get(h.depth - 1)?.subheadings.push(heading);
+		}
+	}
+
+	return toc;
+}
+
+const toc = buildHierarchy(Astro.props.headings);
+---
+
+<ul>{toc.map((h) => <TOCHeader tocItem={h} />)}</ul>
