@@ -85,6 +85,7 @@ blockquote {
 img {
 	width: 80%;
 	height: auto;
-	margin: auto;
+	margin: 1em auto;
 	display: block;
+	border-radius: 8px;
 }

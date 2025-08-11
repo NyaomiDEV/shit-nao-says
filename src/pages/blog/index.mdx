@@ -21,6 +21,7 @@ Remember that you can follow this blog via its [RSS feed](/rss.xml).
 <ul>
 {
 	(await getCollection("blog"))
+	.filter(post => !post.data.draft || import.meta.env.DEV)
 	.sort((a, b) => {
 		if(a.data.pinned && !b.data.pinned) return -1;
 		if(!a.data.pinned && b.data.pinned) return 1;
