@@ -9,13 +9,13 @@ import type { MarkdownHeading } from "astro";
 
 type Props = CollectionEntry<"blog">["data"] & { headings: MarkdownHeading[] };
 
-const { title, description, pubDate, updatedDate, headings } = Astro.props;
+const { title, description, pubDate, updatedDate, headings, disableComments } = Astro.props;
 ---
 
 <html lang="en">
 	<head>
 		<BaseHead title={title} description={description} />
-		<script
+		{!disableComments && <script
 			is:inline
 			src="https://giscus.app/client.js"
 			data-repo="NyaomiDEV/shit-nao-says"
@@ -31,7 +31,7 @@ const { title, description, pubDate, updatedDate, headings } = Astro.props;
 			data-lang="en"
 			data-loading="lazy"
 			crossorigin="anonymous"
-			async></script>
+			async></script>}
 	</head>
 
 	<body>
@@ -60,9 +60,9 @@ const { title, description, pubDate, updatedDate, headings } = Astro.props;
 					<slot />
 				</div>
 			</article>
-			<section class="comments">
+			{!disableComments && <section class="comments">
 				<div class="giscus"></div>
-			</section>
+			</section>}
 		</main>
 		<Footer />
 	</body>
