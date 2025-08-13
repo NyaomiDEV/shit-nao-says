@@ -12,7 +12,7 @@ const blog = defineCollection({
 			language: z.string(),
 			pinned: z.boolean().optional(),
 			draft: z.boolean().optional(),
-  disableComments: z.boolean().optional()
+			disableComments: z.boolean().optional()
 		}),
 });
 
