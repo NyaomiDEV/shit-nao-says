@@ -29,17 +29,21 @@ const { title, description, image } = Astro.props;
 <!-- Primary Meta Tags -->
 {title ? <title>{title} - Shit Nao Says</title> : <title>Shit Nao Says</title>}
 {
-	title
-	? <meta name="title" content={`${title} - Shit Nao Says`} />
-	: <meta name="title" content="Shit Nao Says" />
+	title ? (
+		<meta name="title" content={`${title} - Shit Nao Says`} />
+	) : (
+		<meta name="title" content="Shit Nao Says" />
+	)
 }
 {description && <meta name="description" content={description} />}
 
 <!-- Open Graph / Facebook -->
 {
-	title
-	? <meta property="og:title" content={`${title} - Shit Nao Says`} />
-	: <meta property="og:title" content="Shit Nao Says" />
+	title ? (
+		<meta property="og:title" content={`${title} - Shit Nao Says`} />
+	) : (
+		<meta property="og:title" content="Shit Nao Says" />
+	)
 }
 {description && <meta property="og:description" content={description} />}
 <meta property="og:url" content={Astro.url} />
@@ -48,16 +52,13 @@ const { title, description, image } = Astro.props;
 
 <!-- Twitter -->
 {
-	title
-	? <meta property="twitter:title" content={`${title} - Shit Nao Says`} />
-	: <meta property="twitter:title" content="Shit Nao Says" />
+	title ? (
+		<meta property="twitter:title" content={`${title} - Shit Nao Says`} />
+	) : (
+		<meta property="twitter:title" content="Shit Nao Says" />
+	)
 }
 {description && <meta property="twitter:description" content={description} />}
 <meta property="twitter:url" content={Astro.url} />
 <meta property="twitter:card" content="summary_large_image" />
-{
-	image && <meta
-		property="twitter:image"
-		content={new URL(image.src, Astro.url)}
-	/>
-}
+{image && <meta property="twitter:image" content={new URL(image.src, Astro.url)} />}

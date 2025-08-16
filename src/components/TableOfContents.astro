@@ -3,7 +3,7 @@ import type { MarkdownHeading } from "astro";
 import TOCHeader, { type TableOfContentsItem } from "./TOCHeader.astro";
 
 interface Props {
-	headings: MarkdownHeading[]
+	headings: MarkdownHeading[];
 }
 
 function buildHierarchy(headings: MarkdownHeading[]) {
@@ -33,4 +33,4 @@ function buildHierarchy(headings: MarkdownHeading[]) {
 const toc = buildHierarchy(Astro.props.headings);
 ---
 
-<ul>{toc.map((h) => <TOCHeader tocItem={h} />)}</ul>
+<ul>{toc.map(h => <TOCHeader tocItem={h} />)}</ul>

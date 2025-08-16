@@ -14,24 +14,29 @@ const { title, description, pubDate, updatedDate, headings, disableComments } = 
 
 <html lang="en">
 	<head>
-		<BaseHead title={title} description={description} />
-		{!disableComments && <script
-			is:inline
-			src="https://giscus.app/client.js"
-			data-repo="NyaomiDEV/shit-nao-says"
-			data-repo-id="R_kgDOPZAQTA"
-			data-category="Comments"
-			data-category-id="DIC_kwDOPZAQTM4CuEFP"
-			data-mapping="pathname"
-			data-strict="0"
-			data-reactions-enabled="1"
-			data-emit-metadata="0"
-			data-input-position="top"
-			data-theme="transparent_dark"
-			data-lang="en"
-			data-loading="lazy"
-			crossorigin="anonymous"
-			async></script>}
+		<BaseHead {title} {description} />
+		{
+			!disableComments && (
+				<script
+					is:inline
+					src="https://giscus.app/client.js"
+					data-repo="NyaomiDEV/shit-nao-says"
+					data-repo-id="R_kgDOPZAQTA"
+					data-category="Comments"
+					data-category-id="DIC_kwDOPZAQTM4CuEFP"
+					data-mapping="pathname"
+					data-strict="0"
+					data-reactions-enabled="1"
+					data-emit-metadata="0"
+					data-input-position="top"
+					data-theme="transparent_dark"
+					data-lang="en"
+					data-loading="lazy"
+					crossorigin="anonymous"
+					async
+				/>
+			)
+		}
 	</head>
 
 	<body>
@@ -45,8 +50,7 @@ const { title, description, pubDate, updatedDate, headings, disableComments } = 
 							updatedDate && (
 								<>
 									{" "}
-									- Last updated on{" "}
-									<Date date={updatedDate} />
+									- Last updated on <Date date={updatedDate} />
 								</>
 							)
 						}
@@ -54,15 +58,19 @@ const { title, description, pubDate, updatedDate, headings, disableComments } = 
 					<h1>{title}</h1>
 				</div>
 				<div class="toc">
-					<TableOfContents headings={headings} />
+					<TableOfContents {headings} />
 				</div>
 				<div class="content">
 					<slot />
 				</div>
 			</article>
-			{!disableComments && <section class="comments">
-				<div class="giscus"></div>
-			</section>}
+			{
+				!disableComments && (
+					<section class="comments">
+						<div class="giscus" />
+					</section>
+				)
+			}
 		</main>
 		<Footer />
 	</body>
